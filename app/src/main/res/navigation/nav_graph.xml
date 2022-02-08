@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/startFragment">
+
+    <fragment
+        android:id="@+id/startFragment"
+        android:name="com.lolozianas.cupecakeapp.StartFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_start" />
+    <fragment
+        android:id="@+id/flavorFragment"
+        android:name="com.lolozianas.cupecakeapp.FlavorFragment"
+        android:label="@string/flavor_fragment_label"
+        tools:layout="@layout/fragment_flavor" />
+    <fragment
+        android:id="@+id/pickupFragment"
+        android:name="com.lolozianas.cupecakeapp.PickupFragment"
+        android:label="@string/pick_up_fragment_label"
+        tools:layout="@layout/fragment_pickup" />
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.lolozianas.cupecakeapp.SummaryFragment"
+        android:label="@string/summary_fragment_label"
+        tools:layout="@layout/fragment_summary" />
+</navigation>
