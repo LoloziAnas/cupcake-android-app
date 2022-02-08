@@ -73,6 +73,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintTop_toBottomOf="@id/view_divider"
                 tools:text="Subtotal $5.0" />
 

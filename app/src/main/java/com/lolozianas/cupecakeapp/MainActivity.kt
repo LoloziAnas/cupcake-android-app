@@ -22,6 +22,8 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
 
         // Set up the action bar for use with the NavController
+        // Show a title in the app bar based off of the destination's label,
+        // and display the Up button whenever you're not on a top-level destination.
         setupActionBarWithNavController(navController)
     }
 
