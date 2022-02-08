@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.lolozianas.cupecakeapp.databinding.FragmentPickupBinding
+import com.lolozianas.cupecakeapp.model.OrderViewModel
 
 
 /**
@@ -14,8 +16,15 @@ import com.lolozianas.cupecakeapp.databinding.FragmentPickupBinding
  */
 class PickupFragment : Fragment() {
 
+    // Binding object instance corresponding to the fragment_flavor.xml layout
+    // This property is non-null between the onCreateView() and onDestroyView() lifecycle callbacks,
+    // when the view hierarchy is attached to the fragment.
     private var _binding: FragmentPickupBinding? = null
     private val binding get() = _binding!!
+
+    // Initialize a shared view model object by using 'by activityViewModels()' kotlin property
+    // delegate from the fragment-ktx library.
+    private val sharedViewModel: OrderViewModel by activityViewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -31,21 +40,28 @@ class PickupFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.buttonCancel.setOnClickListener { cancerOrder() }
-        binding.buttonNext.setOnClickListener { goToNextScreen() }
+        binding.apply {
+            // Assign the view model to property binding
+            orderViewModel = sharedViewModel
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+            // Assign fragment
+            pickupFragment = this@PickupFragment
+
+        }
     }
 
     /**
      * Navigate to the next screen to see the order summary
      * */
-    private fun goToNextScreen() {
+     fun goToNextScreen() {
         findNavController().navigate(R.id.action_pickupFragment_to_summaryFragment)
     }
 
     /**
      * Cancel order and start over
      * */
-    private fun cancerOrder() {
+     fun cancerOrder() {
         findNavController().navigate(R.id.action_pickupFragment_to_startFragment)
     }
     /**

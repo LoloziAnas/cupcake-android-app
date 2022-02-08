@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="startFragment"
+            type="com.lolozianas.cupecakeapp.StartFragment" />
     </data>
 
     <ScrollView
@@ -40,8 +42,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
+                android:onClick="@{()-> startFragment.orderCupcake(1)}"
                 android:minWidth="250dp"
-                android:text="@string/one_cupcake" />
+                android:text="@string/one_cupcake"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_six_cupcakes"
@@ -49,8 +53,10 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="14dp"
+                android:onClick="@{()-> startFragment.orderCupcake(6)}"
                 android:minWidth="250dp"
-                android:text="@string/six_cupcakes" />
+                android:text="@string/six_cupcakes"
+                android:textColor="@color/white" />
 
             <Button
                 android:id="@+id/button_twelve_cupcakes"
@@ -59,7 +65,9 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="14dp"
                 android:minWidth="250dp"
-                android:text="@string/twelve_cupcakes" />
+                android:onClick="@{()-> startFragment.orderCupcake(12)}"
+                android:text="@string/twelve_cupcakes"
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </ScrollView>

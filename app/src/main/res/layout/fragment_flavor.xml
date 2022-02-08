@@ -5,6 +5,12 @@
 
     <data>
 
+        <variable
+            name="orderViewModel"
+            type="com.lolozianas.cupecakeapp.model.OrderViewModel" />
+        <variable
+            name="flavorFragment"
+            type="com.lolozianas.cupecakeapp.FlavorFragment" />
     </data>
 
     <ScrollView
@@ -14,6 +20,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:padding="16dp"
             android:layout_height="wrap_content">
 
             <RadioGroup
@@ -29,30 +36,40 @@
                     android:id="@+id/radio_button_vanilla"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="@{orderViewModel.flavor.equals(@string/vanilla)}"
+                    android:onClick="@{()-> orderViewModel.setFlavor(@string/vanilla)}"
                     android:text="@string/vanilla" />
 
                 <RadioButton
                     android:id="@+id/radio_button_chocolate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="@{orderViewModel.flavor.equals(@string/chocolate)}"
+                    android:onClick="@{()-> orderViewModel.setFlavor(@string/chocolate)}"
                     android:text="@string/chocolate" />
 
                 <RadioButton
                     android:id="@+id/radio_button_redVelvet"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="@{orderViewModel.flavor.equals(@string/red_velvet)}"
+                    android:onClick="@{()-> orderViewModel.setFlavor(@string/red_velvet)}"
                     android:text="@string/red_velvet" />
 
                 <RadioButton
                     android:id="@+id/radio_button_caramel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="@{orderViewModel.flavor.equals(@string/salted_caramel)}"
+                    android:onClick="@{()-> orderViewModel.setFlavor(@string/salted_caramel)}"
                     android:text="@string/salted_caramel" />
 
                 <RadioButton
                     android:id="@+id/radio_button_coffee"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="@{orderViewModel.flavor.equals(@string/coffee)}"
+                    android:onClick="@{()-> orderViewModel.setFlavor(@string/coffee)}"
                     android:text="@string/coffee" />
             </RadioGroup>
 
@@ -61,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="1dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/black"
+                android:background="?attr/dividerHorizontal"
                 android:importantForAccessibility="no"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -72,6 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:text="@{@string/subtotal_price(orderViewModel.price)}"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
                 app:layout_constraintTop_toBottomOf="@id/view_divider"
@@ -86,6 +104,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/cancel"
+                android:onClick="@{()-> flavorFragment.cancelOrder()}"
                 app:layout_constraintEnd_toStartOf="@id/button_next"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/text_view_subtotal" />
@@ -97,6 +116,8 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="@string/next"
+                android:onClick="@{()-> flavorFragment.goToNextScreen()}"
+                android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/button_cancel"

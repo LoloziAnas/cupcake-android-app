@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.lolozianas.cupecakeapp.databinding.FragmentFlavorBinding
+import com.lolozianas.cupecakeapp.model.OrderViewModel
 
 
 /**
@@ -19,10 +21,10 @@ class FlavorFragment : Fragment() {
     // when the view hierarchy is attached to the fragment.
     private var _binding: FragmentFlavorBinding? = null
     private val binding get() = _binding!!
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
 
-    }
+    // Initialize a shared view model object by using 'by activityViewModels()' kotlin property
+    // delegate from the fragment-ktx library.
+    private val sharedViewModel: OrderViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,20 +36,34 @@ class FlavorFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        binding.buttonCancel.setOnClickListener { cancelOrder() }
-        binding.buttonNext.setOnClickListener { goToNextScreen() }
+        binding.apply {
+
+            // Specify the fragment as the lifecycle owner
+            lifecycleOwner = viewLifecycleOwner
+
+            // Assign the view model to the property in binding class
+            orderViewModel = sharedViewModel
+
+            // Assign the fragment
+            flavorFragment = this@FlavorFragment
+        }
     }
+
     /**
      * Navigate to the next screen to choose pickup date.
      * */
-    private fun goToNextScreen() {
+    fun goToNextScreen() {
+        // navigate to the [PickupFragment]
         findNavController().navigate(R.id.action_flavorFragment_to_pickupFragment)
     }
 
     /**
      * Cancel the order and start over.
      * */
-    private fun cancelOrder() {
+    fun cancelOrder() {
+        // Reset the order values
+        sharedViewModel.resetOrder()
+        // Navigate to [StartFragment]
         findNavController().navigate(R.id.action_flavorFragment_to_startFragment)
     }
 
