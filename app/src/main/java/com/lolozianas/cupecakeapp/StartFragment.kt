@@ -43,11 +43,12 @@ class StartFragment : Fragment() {
         // Assign the fragment
         binding.startFragment = this@StartFragment
 
-        /*binding.slider.addOnChangeListener { _, value, _ ->
+        //
+        binding.slider.addOnChangeListener { _, value, _ ->
             // Responds to when slider's value is changed
+            Log.d(TAG, "onViewCreated: $value")
+        }
 
-        }*/
-        Log.d(TAG, "onViewCreated: ${binding.slider.value}")
     }
 
     /**
