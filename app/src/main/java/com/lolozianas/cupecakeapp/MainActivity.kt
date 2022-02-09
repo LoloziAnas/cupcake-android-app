@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
     /**
      * Handles navigation when the user chooses Up from the action bar.
      * */
-    override fun navigateUpTo(upIntent: Intent?): Boolean {
-        return super.navigateUpTo(upIntent) || navController.navigateUp()
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }

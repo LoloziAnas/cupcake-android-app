@@ -1,6 +1,7 @@
 package com.lolozianas.cupecakeapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,9 @@ import com.lolozianas.cupecakeapp.model.OrderViewModel
  * fragment [StartFragment] is the fist screen of the Cupcake app.
  * The user can choose how many cupcake wants to order.
  */
+
+private const val TAG = "StartFragment"
+
 class StartFragment : Fragment() {
 
     // Binding object instance corresponding to the fragment_start.xml layout
@@ -29,7 +33,7 @@ class StartFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentStartBinding.inflate(inflater, container, false)
         return binding.root
@@ -38,6 +42,12 @@ class StartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         // Assign the fragment
         binding.startFragment = this@StartFragment
+
+        /*binding.slider.addOnChangeListener { _, value, _ ->
+            // Responds to when slider's value is changed
+
+        }*/
+        Log.d(TAG, "onViewCreated: ${binding.slider.value}")
     }
 
     /**
