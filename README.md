@@ -24,3 +24,15 @@ Getting Started
 2. Download the sample.
 3. Import the sample into Android Studio.
 4. Build and run the sample.
+
+Screenshots
+---------------
+<img src="https://github.com/LoloziAnas/cupcake-android-app/blob/main/images/1.jpeg" width="235" height="493"> 
+<img src="https://github.com/LoloziAnas/cupcake-android-app/blob/main/images/2.jpeg"  width="235" height="493"> 
+<img src="https://github.com/LoloziAnas/cupcake-android-app/blob/main/images/3.jpeg"  width="235" height="493">  
+<img src="https://github.com/LoloziAnas/cupcake-android-app/blob/main/images/4.jpeg"  width="235" height="493">
+<img src="https://github.com/LoloziAnas/cupcake-android-app/blob/main/images/5.jpeg"  width="235" height="493">
+
+License
+--------
+MIT License, see the [LICENSE](LICENSE) file.
